@@ -1,4 +1,18 @@
 export class Trade {
+	constructor(private _date: Date, public readonly quantity: number, public readonly amount: number) {}
+
+	get date(): Date {
+		const date = new Date(this._date.getTime());
+		return date;
+	}
+
+	get volume(): number {
+		return this.quantity * this.amount;
+	}
+}
+
+/*
+export class Trade {
 	private _date: Date;
 	private _quantity: number;
 	private _amount: number;
@@ -10,7 +24,8 @@ export class Trade {
 	}
 
 	get date(): Date {
-		return this._date;
+        const date = new Date(this._date.getTime());
+		return date;
 	}
 
 	get quantity(): number {
@@ -25,3 +40,4 @@ export class Trade {
 		return this._quantity * this._amount;
 	}
 }
+*/
