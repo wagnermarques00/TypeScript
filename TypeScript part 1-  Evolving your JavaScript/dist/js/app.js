@@ -1,3 +1,7 @@
-import { Trade } from "./models/trade.js";
-const trade = new Trade(new Date(), 5, 100);
-console.log(`Volume: ${trade.volume}`);
+import { TradeController } from "./controllers/trade-controller.js";
+const controller = new TradeController();
+const form = document.querySelector(".form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    controller.add();
+});

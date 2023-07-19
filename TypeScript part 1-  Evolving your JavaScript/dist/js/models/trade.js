@@ -1,5 +1,5 @@
 export class Trade {
-    constructor(date, quantity, amount) {
+    constructor(amount, date, quantity) {
         this._date = date;
         this._quantity = quantity;
         this._amount = amount;
