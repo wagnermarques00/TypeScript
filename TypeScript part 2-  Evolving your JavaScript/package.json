@@ -1,0 +1,20 @@
+{
+	"author": "",
+	"description": "",
+	"license": "ISC",
+	"main": "index.js",
+	"name": "alurabank",
+	"version": "1.0.0",
+	"scripts": {
+		"compile": "tsc",
+		"server": "lite-server --baseDir=dist",
+		"start": "concurrently \"npm run watch\" \"npm run server\"",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"watch": "tsc -w"
+	},
+	"devDependencies": {
+		"concurrently": "^6.0.0",
+		"lite-server": "^2.6.1",
+		"typescript": "^5.1.6"
+	}
+}
