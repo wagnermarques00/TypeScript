@@ -4,8 +4,8 @@ Studies carried out on the Alura platform. I choose to put the codes in English 
 
 ## Studied so far:
 
-1. 
+1. TypeScript part 1: Evolving your JavaScript
 
 ## Studying at the moment:
 
-- TypeScript part 1: Evolving your JavaScript
+- TypeScript part 2: Evolving your JavaScript
