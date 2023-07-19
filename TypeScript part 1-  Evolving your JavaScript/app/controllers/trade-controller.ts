@@ -1,9 +1,11 @@
 import { Trade } from "../models/trade.js";
+import { Trades } from "../models/trades.js";
 
 export class TradeController {
 	private inputAmount: HTMLInputElement;
 	private inputDate: HTMLInputElement;
 	private inputQuantity: HTMLInputElement;
+	private trades: Trades = new Trades();
 
 	constructor() {
 		this.inputAmount = document.querySelector("#amount");
@@ -13,7 +15,7 @@ export class TradeController {
 
 	add(): void {
 		const trade = this.createTrade();
-		console.log(trade);
+		this.trades.add(trade);
 		this.clearForm();
 	}
 
