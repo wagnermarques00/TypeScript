@@ -1,8 +1,10 @@
 import { Trade } from "../models/trade.js";
 import { Trades } from "../models/trades.js";
+import { MessageView } from "../views/message-view.js";
 import { TradesView } from "../views/trades-view.js";
 export class TradeController {
     constructor() {
+        this.messageView = new MessageView("#message-view");
         this.trades = new Trades();
         this.tradesView = new TradesView("#tradesView");
         this.inputAmount = document.querySelector("#amount");
@@ -14,6 +16,7 @@ export class TradeController {
         const trade = this.createTrade();
         this.trades.add(trade);
         this.tradesView.update(this.trades);
+        this.messageView.update("Trade added successfully.");
         this.clearForm();
     }
     clearForm() {
