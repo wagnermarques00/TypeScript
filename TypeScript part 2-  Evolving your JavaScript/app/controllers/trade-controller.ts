@@ -1,3 +1,4 @@
+import { DaysOfWeek } from "../enums/days-of-week.js";
 import { Trade } from "../models/trade.js";
 import { Trades } from "../models/trades.js";
 import { MessageView } from "../views/message-view.js";
@@ -18,15 +19,20 @@ export class TradeController {
 		this.tradesView.update(this.trades);
 	}
 
-	add(): void {
+	public add(): void {
 		const trade = this.createTrade();
+
+		if (!this.isBusinessDay(trade.date)) {
+			this.messageView.update("The trade can only be made on a business day.");
+			return;
+		}
+
 		this.trades.add(trade);
-		this.tradesView.update(this.trades);
-		this.messageView.update("Trade added successfully.");
 		this.clearForm();
+		this.updateView();
 	}
 
-	clearForm(): void {
+	private clearForm(): void {
 		this.inputAmount.value = "";
 		this.inputDate.value = "";
 		this.inputQuantity.value = "";
@@ -34,12 +40,21 @@ export class TradeController {
 		this.inputDate.focus();
 	}
 
-	createTrade(): Trade {
+	private createTrade(): Trade {
 		const amount = parseFloat(this.inputAmount.value);
 		const dateRegularExpression = /-/g;
 		const date = new Date(this.inputDate.value.replace(dateRegularExpression, ","));
 		const quantity = parseInt(this.inputQuantity.value);
 
 		return new Trade(amount, date, quantity);
+	}
+
+	private isBusinessDay(date: Date) {
+		return date.getDay() > DaysOfWeek.SUNDAY && date.getDay() < DaysOfWeek.SATURDAY;
+	}
+
+	private updateView(): void {
+		this.tradesView.update(this.trades);
+		this.messageView.update("Trade added successfully.");
 	}
 }

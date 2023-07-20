@@ -2,7 +2,7 @@ import { Trades } from "../models/trades.js";
 import { View } from "./view.js";
 
 export class TradesView extends View<Trades> {
-	template(model: Trades): string {
+	protected template(model: Trades): string {
 		return `
             <table class="table table-hover table-bordered">
                 <thead>
@@ -18,7 +18,7 @@ export class TradesView extends View<Trades> {
 						.map((trade) => {
 							return `
                             <tr>
-                                <td>${new Intl.DateTimeFormat().format(trade.date)}</td>
+                                <td>${this.formatDate(trade.date)}</td>
                                 <td>${trade.quantity}</td>
                                 <td>${trade.amount}</td>
                             </tr>
@@ -28,5 +28,9 @@ export class TradesView extends View<Trades> {
                 </tbody>
             </table>
         `;
+	}
+
+	private formatDate(date: Date): string {
+		return new Intl.DateTimeFormat().format(date);
 	}
 }

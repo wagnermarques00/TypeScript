@@ -3,11 +3,11 @@ import { Trade } from "./trade.js";
 export class Trades {
 	private trades: Trade[] = [];
 
-	add(trade: Trade): void {
+	public add(trade: Trade): void {
 		this.trades.push(trade);
 	}
 
-	list(): readonly Trade[] {
+	public list(): readonly Trade[] {
 		return [...this.trades];
 	}
 }

@@ -16,7 +16,7 @@ export class TradesView extends View {
             .map((trade) => {
             return `
                             <tr>
-                                <td>${new Intl.DateTimeFormat().format(trade.date)}</td>
+                                <td>${this.formatDate(trade.date)}</td>
                                 <td>${trade.quantity}</td>
                                 <td>${trade.amount}</td>
                             </tr>
@@ -26,5 +26,8 @@ export class TradesView extends View {
                 </tbody>
             </table>
         `;
+    }
+    formatDate(date) {
+        return new Intl.DateTimeFormat().format(date);
     }
 }
