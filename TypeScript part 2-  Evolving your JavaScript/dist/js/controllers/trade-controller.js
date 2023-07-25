@@ -7,14 +7,14 @@ export class TradeController {
     constructor() {
         this.messageView = new MessageView("#message-view");
         this.trades = new Trades();
-        this.tradesView = new TradesView("#tradesView");
+        this.tradesView = new TradesView("#tradesView", true);
         this.inputAmount = document.querySelector("#amount");
         this.inputDate = document.querySelector("#date");
         this.inputQuantity = document.querySelector("#quantity");
         this.tradesView.update(this.trades);
     }
     add() {
-        const trade = this.createTrade();
+        const trade = Trade.create(this.inputAmount.value, this.inputDate.value, this.inputQuantity.value);
         if (!this.isBusinessDay(trade.date)) {
             this.messageView.update("The trade can only be made on a business day.");
             return;
@@ -28,13 +28,6 @@ export class TradeController {
         this.inputDate.value = "";
         this.inputQuantity.value = "";
         this.inputDate.focus();
-    }
-    createTrade() {
-        const amount = parseFloat(this.inputAmount.value);
-        const dateRegularExpression = /-/g;
-        const date = new Date(this.inputDate.value.replace(dateRegularExpression, ","));
-        const quantity = parseInt(this.inputQuantity.value);
-        return new Trade(amount, date, quantity);
     }
     isBusinessDay(date) {
         return date.getDay() > DaysOfWeek.SUNDAY && date.getDay() < DaysOfWeek.SATURDAY;

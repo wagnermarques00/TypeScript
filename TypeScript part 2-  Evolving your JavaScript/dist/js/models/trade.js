@@ -11,6 +11,13 @@ export class Trade {
     get volume() {
         return this.quantity * this.amount;
     }
+    static create(amountString, dateString, quantityString) {
+        const amount = parseFloat(amountString);
+        const dateRegularExpression = /-/g;
+        const date = new Date(dateString.replace(dateRegularExpression, ","));
+        const quantity = parseInt(quantityString);
+        return new Trade(amount, date, quantity);
+    }
 }
 /*
 export class Trade {
