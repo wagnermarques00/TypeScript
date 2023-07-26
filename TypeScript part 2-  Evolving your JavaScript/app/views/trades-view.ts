@@ -4,7 +4,7 @@ import { View } from "./view.js";
 export class TradesView extends View<Trades> {
 	protected template(model: Trades): string {
 		return `
-            <table class="table table-hover table-bordered">
+            <table class="table table-hover table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Date</th>

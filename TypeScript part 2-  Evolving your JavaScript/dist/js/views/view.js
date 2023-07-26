@@ -1,7 +1,13 @@
 export class View {
     constructor(selector, escape) {
         this.escape = false;
-        this.element = document.querySelector(selector);
+        const element = document.querySelector(selector);
+        if (element) {
+            this.element = element;
+        }
+        else {
+            throw Error(`Selector ${selector} does not exist in the DOM. Please check.`);
+        }
         if (escape) {
             this.escape = escape;
         }

@@ -43,4 +43,6 @@ The `tsconfig.json` file contains compiler options and other configurations for 
 1. `"noEmitOnError": true`: This option prevents TypeScript from emitting compiled output (JavaScript files) if there are any errors in the code.
 2. `"noImplicitAny": true`: With this option enabled, TypeScript will issue an error when it cannot infer the type of a variable explicitly. It encourages you to provide type annotations for all variables.
 3. `"outDir": "dist/js"`: The output directory for compiled JavaScript files. TypeScript will place the generated JavaScript files in the `dist/js` directory.
-4. `"target": "ES6"`: This option sets the ECMAScript target version for the compiled code. In this case, the project is targeting ECMAScript 2015 (ES6).
+4. `"removeComments": true`: This option enables the removal of comments from the compiled JavaScript output. When TypeScript transpiles the code to JavaScript, it will exclude any comments in the source code from the generated output in the `dist/js` directory.
+5. `"strictNullChecks": true`: This option enforces strict null checks in TypeScript. When `strictNullChecks` is set to `true`, the TypeScript compiler will perform rigorous checks to ensure that variables are not assigned a value of `null` or `undefined` unless explicitly specified in the variable's type.
+6. `"target": "ES6"`: This option sets the ECMAScript target version for the compiled code. In this case, the project is targeting ECMAScript 2015 (ES6).
