@@ -5,7 +5,7 @@ export function escape(target: any, propertyKey: string, descriptor: PropertyDes
 		let returned = originalMethod.apply(this, args);
 
 		if (typeof returned === "string") {
-			console.log(`@escape in action in "${this.constructor.name}" class for the "${propertyKey}" method`);
+			// console.log(`@escape in action in "${this.constructor.name}" class for the "${propertyKey}" method`);
 			returned = returned.replace(/<script>[\s\S]*?<\/script>/, "");
 		}
 

@@ -13,8 +13,6 @@ export abstract class View<T> {
 		}
 	}
 
-	@logExecutionTime(true)
-	@inspect
 	public update(model: T): void {
 		let template = this.template(model);
 
