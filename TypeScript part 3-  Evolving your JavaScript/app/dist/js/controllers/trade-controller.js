@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { logExecutionTime } from "../decoratos/execution-time-logger.js";
+import { logExecutionTime } from "../decorators/execution-time-logger.js";
 import { Weekdays } from "../enums/week-days.js";
 import { Trade } from "../models/trade.js";
 import { Trades } from "../models/trades.js";
@@ -13,7 +13,7 @@ import { TradesView } from "../views/trades-view.js";
 export class TradeController {
     constructor() {
         this.trades = new Trades();
-        this.tradesView = new TradesView("#tradesView", true);
+        this.tradesView = new TradesView("#tradesView");
         this.messageView = new MessageView("#messageView");
         this.inputData = document.querySelector("#date");
         this.inputQuantity = document.querySelector("#quantity");

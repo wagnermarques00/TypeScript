@@ -1,4 +1,4 @@
-import { logExecutionTime } from "../decoratos/execution-time-logger.js";
+import { logExecutionTime } from "../decorators/execution-time-logger.js";
 import { Weekdays } from "../enums/week-days.js";
 import { Trade } from "../models/trade.js";
 import { Trades } from "../models/trades.js";
@@ -10,7 +10,7 @@ export class TradeController {
 	private inputQuantity: HTMLInputElement;
 	private inputAmount: HTMLInputElement;
 	private trades = new Trades();
-	private tradesView = new TradesView("#tradesView", true);
+	private tradesView = new TradesView("#tradesView");
 	private messageView = new MessageView("#messageView");
 
 	constructor() {
