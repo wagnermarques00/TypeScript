@@ -29,7 +29,7 @@ export class TradesView extends View {
                                 ${trade.quantity}
                             </td>
                             <td>
-                                ${trade.value}
+                                ${trade.amount}
                             </td>
                         </tr>
                     `;
@@ -46,3 +46,4 @@ export class TradesView extends View {
 __decorate([
     escape
 ], TradesView.prototype, "template", null);
+//# sourceMappingURL=trades-view.js.map

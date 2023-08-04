@@ -26,7 +26,7 @@ export class TradesView extends View<Trades> {
                                 ${trade.quantity}
                             </td>
                             <td>
-                                ${trade.value}
+                                ${trade.amount}
                             </td>
                         </tr>
                     `;

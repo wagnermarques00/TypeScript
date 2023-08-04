@@ -10,3 +10,4 @@ export class TradesService {
         });
     }
 }
+//# sourceMappingURL=trades-service.js.map

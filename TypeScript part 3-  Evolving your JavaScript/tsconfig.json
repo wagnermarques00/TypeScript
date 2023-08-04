@@ -5,6 +5,7 @@
 		"noImplicitAny": true,
 		"outDir": "app/dist/js",
 		"removeComments": true,
+		"sourceMap": true,
 		"strictNullChecks": true,
 		"target": "ES6"
 	},

@@ -5,6 +5,7 @@ import { Weekdays } from "../enums/week-days.js";
 import { Trade } from "../models/trade.js";
 import { Trades } from "../models/trades.js";
 import { TradesService } from "../services/trades-service.js";
+import { print } from "../utils/print.js";
 import { MessageView } from "../views/message-view.js";
 import { TradesView } from "../views/trades-view.js";
 
@@ -39,17 +40,25 @@ export class TradeController {
 		}
 
 		this.trades.add(trade);
+		print(trade, this.trades);
 		this.clearForm();
 		this.updateView();
 	}
 
-	importData(): void {
-		this.tradesService.getDayTrades().then((todayTrades) => {
-			for (let trade of todayTrades) {
-				this.trades.add(trade);
-			}
-			this.tradesView.update(this.trades);
-		});
+	public importData(): void {
+		this.tradesService
+			.getDayTrades()
+			.then((todayTrades) => {
+				return todayTrades.filter((todayTrade) => {
+					return !this.trades.getList().some((trade) => trade.isEqual(todayTrade));
+				});
+			})
+			.then((todayTrades) => {
+				for (let trade of todayTrades) {
+					this.trades.add(trade);
+				}
+				this.tradesView.update(this.trades);
+			});
 	}
 
 	private isWeekday(date: Date) {
